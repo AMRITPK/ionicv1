@@ -1,0 +1,106 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<style>
+td.grey {
+   background: grey; cursor: pointer; padding: 2px
+}
+td.green {
+   background: green; cursor: pointer; padding: 2px
+}
+
+</style>
+<ion-view view-title="Movie Details">
+  <ion-content class="padding">
+  
+  <ion-scroll zooming="true" direction="y">
+   	<div class="list card">
+  <h2>Liberty Mini Paradise</h2>
+  <p>Thalassery, Thalassery, Kannur ,ph 6234652456456</p>
+<label class = "item item-input item-select">
+   <div class = "input-label">
+      Day
+   </div>
+	
+   <select>
+      <option>23-sep</option>
+      <option >24-sep</option>
+      <option>25-sep</option>
+      <option>26-sep</option>
+      <option>27-sep</option>
+      <option>28-sep</option>
+      <option>29-sep</option>
+   </select>
+ 
+</label>
+  
+  <label class = "item item-input item-select">
+    <div class = "input-label">
+      Show Time
+   </div>
+	
+   <select>
+      <option>11 AM</option>
+      <option>3 PM</option>
+      <option>5:30 PM</option>
+      <option>9:00 PM</option>
+   
+   </select> 
+ 
+</label>
+   <a class="button" ng-click="seatsflag=true" >Book Now</a>
+   </div>
+
+      	<div class="list card">
+  <h2>Liberty Paradise</h2>
+  <p> Thalassery, Kannur ,ph 6234652456456</p>
+<label class = "item item-input item-select">
+   <div class = "input-label">
+      Day
+   </div>
+	
+   <select>
+      <option>23-sep</option>
+      <option >24-sep</option>
+      <option>25-sep</option>
+      <option>26-sep</option>
+      <option>27-sep</option>
+      <option>28-sep</option>
+      <option>29-sep</option>
+   </select>
+ 
+</label>
+  
+  <label class = "item item-input item-select">
+    <div class = "input-label">
+      Show Time
+   </div>
+	
+   <select>
+      <option>11 AM</option>
+      <option>3 PM</option>
+      <option>5:30 PM</option>
+      <option>9:00 PM</option>
+   
+   </select> 
+ 
+</label>
+     <a class="button" ng-click="seatsflag=true" >Book Now</a>
+   </div>
+   
+   
+<table ng-show="seatsflag" >
+    <tr>
+		<td ng-repeat="seat in seats" ng-click="clicked(seat.id)" style="padding:5px; background:{{seat.col}}"> {{seat.val}} </td>
+        
+    </tr>
+
+</table>
+<br/>
+	<button ng-show="bookflag" >Book The Seats{{choosen}}</button>
+	</ion-scroll>
+   </ion-content>
+</ion-view>
