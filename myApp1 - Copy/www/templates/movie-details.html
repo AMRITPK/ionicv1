@@ -1,0 +1,55 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+
+<ion-view >
+  <ion-content class="padding" style="margin-top:50px">
+  
+  <ion-scroll zooming="true" direction="y">
+   	<div class="list card" ng-repeat="theatre in validtheatres track by theatre.id">
+		<h2>{{theatre.name}}</h2>
+		<p>{{theatre.address}}</p>
+
+		<label class="item item-input item-select">
+			<div class="input-label">
+				Day
+			</div>
+
+			<select class="button" ng-change="setday(day,theatre.id)" ng-model="day[theatre.id]" ng-options="y for (x, y) in nextdays">
+			</select>
+
+		</label>
+
+
+		<div ng-repeat="(key,showtimeitem) in theatre.showtimes ">
+			<div ng-if="key == movieid">
+				
+			<a ng-class="(day[theatre.id]) ? 'button button-balanced' : 'button'" style="margin:3px" ng-repeat="showtime in showtimeitem" ng-click="bookvalidate(movieid,theatre.id,showtime)" >{{showtime}}</a>	
+	
+		  	
+			</div>
+		</div>
+		
+		
+
+   </div>
+
+
+   
+   
+<table ng-show="seatsflag" >
+
+    <tr>
+		<td ng-repeat="seat in seats" ng-click="clicked(seat.id)" style="padding:5px; background:{{seat.col}}"> {{seat.val}} </td>
+        
+    </tr>
+
+</table>
+<br/>
+	<button ng-show="bookflag" >Book The Seats{{choosen}}</button>
+	</ion-scroll>
+   </ion-content>
+</ion-view>
