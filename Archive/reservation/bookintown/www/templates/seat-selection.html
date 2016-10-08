@@ -1,0 +1,67 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<style>
+td.grey {
+   background: grey; cursor: pointer; padding: 2px
+}
+td.green {
+   background: green; cursor: pointer; padding: 2px
+}
+
+</style>
+<ion-view >
+  <ion-content class="padding" style="margin-top:50px">
+  
+  <div class = "item row" >
+		
+	<ion-scroll direction="xy">
+
+		<style type="text/css">
+		table.tableizer-table {
+		font-size: 12px;
+		border: 1px solid #CCC; 
+		font-family: Arial, Helvetica, sans-serif;
+		} 
+		.tableizer-table td {
+		padding: 4px;
+		margin: 3px;
+		border: 1px solid #CCC;
+		}
+		.tableizer-table th {
+		background-color: #104E8B; 
+		color: #FFF;
+		font-weight: bold;
+		}
+		</style>
+
+
+		<table class="tableizer-table">
+		<thead><tr class="tableizer-firstrow">
+		----------------------------------screeen----------------------------------------------</tr></thead><tbody>
+		<tr ng-repeat="k  in seatLayout track by $index" ng-init="parentIndex = $index">
+
+		<td ng-repeat="(keey,name) in seatLayout[$index] track by $index">
+
+
+		<div ng-if="name!='X'" ng-click="clicked(parentIndex,keey)"  style="color:white;background:{{bookingstatus[parentIndex][keey]}}" >{{name}}</div>
+		<div ng-if="name=='X'" style="height:20px;width:20px"  ></div>
+		</td>
+		</tr>
+
+		</tbody></table>
+
+
+		<br/>
+		
+	</ion-scroll>
+  </div>
+  <div class = "item row">
+	<button  >Book The Seats{{choosen}}</button>
+  </div>
+	
+   </ion-content>
+</ion-view>

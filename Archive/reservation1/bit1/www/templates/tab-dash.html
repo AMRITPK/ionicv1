@@ -1,0 +1,158 @@
+<style>
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #000;
+    font-weight: 500;
+    font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+    line-height: 1.2;
+}
+h2{
+    margin: 0 0 2px 0;
+    font-size: 16px;
+    font-weight: normal;
+	
+	}
+.desc{
+    padding: 16px;
+}
+.posterdiv{
+
+  height: 60%;
+
+}
+.popup{
+  top: 0 ;
+  bottom: 0 ; 
+  left: 0 ;
+  right: 0 ;
+  width: 100% ;
+}
+
+.posterimage { max-height:85%;max-width:400px}
+
+</style>
+
+<ion-view >
+
+
+<ion-content overflow-scroll="true" style="border:5px solid orange"scrollbar-y="true" direction="y">
+
+  <ion-slides ng-hide="hidecarousal"  style="height:85%" options="options" slider="data.slider">
+     <ion-slide-page  ng-repeat="movie in movies" >
+	
+		<div class="item item-image poster posterdiv">
+		
+		
+			<div class = "item row">
+			<div class = "col-20">
+			</div>
+			<div class = "col">
+					<div class="posterimage">
+						<img ng-src="{{movie.poster}}"  />
+					</div>
+			</div>
+			<div class = "col-20">
+			</div>			
+			</div>
+			
+
+		</div>
+ 		<div class="list card" >
+		
+
+  <div class="item item-divider">
+     <div class="row">
+	 <h2>{{movie.name}}</h2>
+	 </div>
+	 <div class="row">
+   		<div class = "col">
+				<a class="item item-icon-left assertive" ng-click="showPopup()">
+				<i class="icon ion-music-note"></i>
+				Trailer
+				</a>		   
+		   </div>
+		   <div class = "col"><a class="button button-royal pull-right" href="#/tab/dash/moviedetails/{{movie.id}}" >BOOK NOW</a></div>
+		</div>  
+   </div>
+	
+		
+		
+		</div>
+
+    </ion-slide-page >
+	
+   
+  </ion-slides>
+ 
+ 
+ <div style="height:60px" ng-show="hidecarousal">
+ 
+ </div>
+ 
+ <div class = " item  row">
+	<div class="col" >
+	<select class="button" ng-model="languagemodel" ng-change="updatelanguage(languagemodel)">
+      <option value="">---Language---</option> <!-- not selected / blank option -->
+      <option ng-repeat="language in languages" value="{{language}}">{{language}}</option> <!-- interpolation -->
+    
+    </select>
+	
+	</div>
+	<div class="col">
+	<select class="button" ng-model="genremodel" ng-change="updategenre(genremodel)">
+      <option value="">---Type---</option> <!-- not selected / blank option -->
+      <option ng-repeat="genre in genres" value="{{genre}}">{{genre}}</option> <!-- interpolation -->
+    
+    </select>
+	
+	</div>	
+
+	<div class="col" ng-show="hidecarousal">
+		<a class="button" ng-click="reset()">Show all</a>
+	</div>
+	
+   </div>
+
+
+ 		<div class="list card" ng-repeat="movie in filteredmovies">
+		
+		<div class="item item-avatar">
+		<img ng-src="{{movie.poster}}" />
+		<h2>{{movie.name}}</h2>
+		<p>{{movie.highlight}}</p>
+		
+		</div>
+		<div class="item item-body">
+			
+			{{movie.description}}
+			
+			<div class = "item row">
+			{{movie.showtimings.join(',')}}
+			</div>			
+		</div>
+		<div class = "item row">
+			<div class = "col">
+				<a class="item item-icon-left assertive" href="#">
+				<i class="icon ion-music-note"></i>
+				Trailer
+				</a>		   
+		   </div>
+		   <div class = "col"><a class="button button-royal pull-right" href="#/tab/dash/moviedetails/{{movie.id}}" >BOOK NOW</a></div>
+		  
+		</div>
+		
+		
+		</div>
+		
+		<a> 
+		
+
+
+
+</a>
+		
+			
+ 
+ </ion-content>
+ 
+
+</ion-view>
